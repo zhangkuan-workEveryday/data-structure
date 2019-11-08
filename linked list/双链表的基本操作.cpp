@@ -109,3 +109,61 @@ bool DeleteDNode(DLinkNode *&L, int k) {
   }
   return true;
 }
+
+//————————————链表元素查找(已知位置)————————
+bool GetElem(DLinkNode *L, int k, ElemType e) {
+  DLinkNode *p = L;
+  int i = 0;
+  if (k < 1)
+    return false;
+  while (i < k  &&  p != NULL) {
+    p = p->next;
+  }
+  if (p == NULL)
+    return false;
+  e = p->data;
+  return true;
+}
+
+
+//————————————双链表元素查找（已知data）—————
+int LocateElem(DLinkNode *L, ElemType x) {
+  DLinkNode *p = L->next;
+  int i = 1;
+  while (p->data != x  &&  p != NULL) {
+    p = p->next;
+    i++;
+  }
+  if (p == NULL)
+    return 0;
+  else
+  return i;
+}
+
+//————————————双链表的空判断—————————————
+bool EmptyList(DLinkNode *L) {
+  if (L->next == NULL)
+    return true;
+  else
+    return false;
+}
+
+//————————————链表长度计算——————————————
+int ListLength(DLinkNode *L) {
+  DLinkNode *p = L;
+  int i = 0;
+  while (p != NULL) {
+    p = p->next;
+    i++;
+  }
+  return i;
+}
+
+//————————————双链表的打印——————————————
+void DisplayList(DLinkNode *L) {
+  DLinkNode *p = L->next;
+  while (p != NULL) {
+    cout << p->data << " ";
+    p = p->next;
+  }
+}
